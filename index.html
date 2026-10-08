@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Body of Work — Waves 1–4 readout</title>
+<style>
+  :root {
+    --ink: #1f1a17;
+    --paper: #ffffff;
+    --warm: #f6f1eb;
+    --stone: #f7f6f4;
+    --line: #e4e0da;
+    --muted: #6b6560;
+    --copper: #b85c38;
+    --green: #2f5d45;
+    --green-bg: #e7f0ea;
+    --soft: #3a342f;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--ink); }
+  body {
+    font-family: "Avenir Next", "Segoe UI", Calibri, sans-serif;
+    color: var(--ink);
+    overflow: hidden;
+  }
+  .slide {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    padding: 4.2vh 4.5vw 8vh;
+    overflow: hidden;
+    background: var(--paper);
+  }
+  .slide.on { display: flex; flex-direction: column; }
+  .slide.dark { background: var(--ink); color: #fff; }
+  .kicker {
+    font-size: 1.5vh;
+    letter-spacing: 0.14em;
+    font-weight: 700;
+    color: var(--copper);
+    margin: 0 0 0.6vh;
+  }
+  .dark .kicker { color: #e4c4b4; }
+  h1 {
+    font-family: Palatino, "Iowan Old Style", Georgia, serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0;
+    line-height: 1.02;
+  }
+  h2 {
+    font-family: Palatino, "Iowan Old Style", Georgia, serif;
+    font-size: 3.6vh;
+    margin: 0 0 1vh;
+    line-height: 1.1;
+  }
+  .lede { color: var(--muted); font-size: 1.7vh; margin: 0.4vh 0 1.6vh; }
+  .dark .lede { color: #d9d3cc; }
+  table { width: 100%; border-collapse: collapse; font-size: 1.65vh; }
+  th {
+    text-align: right;
+    font-size: 1.35vh;
+    font-weight: 700;
+    color: #fff;
+    background: var(--ink);
+    padding: 1vh 0.7vw;
+  }
+  th:first-child, td:first-child { text-align: left; }
+  td {
+    padding: 1.05vh 0.7vw;
+    border-bottom: 1px solid var(--line);
+    vertical-align: middle;
+  }
+  td .sub { display: block; color: var(--muted); font-size: 1.35vh; margin-top: 0.2vh; }
+  tr.warm td { background: var(--warm); }
+  tr.good td { background: var(--green-bg); }
+  .num { font-variant-numeric: tabular-nums; text-align: right; }
+  .goodnum { color: var(--green); font-weight: 700; }
+  .cards { display: flex; flex-direction: column; gap: 1.4vh; margin-top: 1.6vh; }
+  .card {
+    background: var(--stone);
+    border-radius: 8px;
+    padding: 1.6vh 1.4vw;
+    display: grid;
+    grid-template-columns: 5vw 1fr;
+    gap: 0.6vw;
+    align-items: start;
+  }
+  .card.alert { background: var(--warm); }
+  .idx {
+    font-family: Palatino, Georgia, serif;
+    color: var(--copper);
+    font-size: 2vh;
+    font-weight: 700;
+  }
+  .card h3 { margin: 0 0 0.4vh; font-family: Palatino, Georgia, serif; font-size: 2.2vh; }
+  .card p { margin: 0; font-size: 1.75vh; line-height: 1.35; color: var(--soft); }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6vw; margin-top: 1.2vh; }
+  .stack { display: flex; flex-direction: column; gap: 1.1vh; }
+  .mini {
+    border-radius: 8px;
+    padding: 1.2vh 1vw 1.3vh;
+  }
+  .mini h3 { margin: 0 0 0.3vh; font-family: Palatino, Georgia, serif; font-size: 1.9vh; }
+  .mini p { margin: 0; font-size: 1.55vh; line-height: 1.35; color: var(--soft); }
+  .warmbg { background: var(--warm); }
+  .greenbg { background: var(--green-bg); }
+  .verdict {
+    margin-top: auto;
+    background: var(--stone);
+    border-radius: 8px;
+    padding: 1.4vh 1.2vw;
+  }
+  .verdict strong { font-family: Palatino, Georgia, serif; font-size: 1.8vh; display: block; margin-bottom: 0.3vh; }
+  .verdict p { margin: 0; font-size: 1.65vh; line-height: 1.35; color: var(--soft); }
+  .foot { margin-top: 1vh; color: var(--muted); font-size: 1.35vh; }
+  .title-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2vw; margin-top: auto; }
+  .title-stats b {
+    display: block;
+    font-family: Palatino, Georgia, serif;
+    font-size: 4.4vh;
+    font-weight: 700;
+  }
+  .title-stats span { color: #c8c0b8; font-size: 1.7vh; }
+  .hero {
+    font-family: Palatino, Georgia, serif;
+    font-size: 8.2vh;
+    line-height: 0.95;
+    margin: 2vh 0 2vh;
+    max-width: 16ch;
+  }
+  .cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2vw; margin-top: 2vh; }
+  .cols3 h3 { font-family: Palatino, Georgia, serif; font-size: 2vh; margin: 0 0 0.6vh; }
+  .cols3 p { margin: 0; font-size: 1.7vh; line-height: 1.4; color: var(--soft); }
+  .quote {
+    font-family: Palatino, Georgia, serif;
+    font-style: italic;
+    font-size: 2.1vh;
+    line-height: 1.35;
+    margin: 1vh 0;
+  }
+  .ws { display: grid; grid-template-columns: 1.35fr 0.75fr; gap: 1.4vw; margin-top: 1.4vh; }
+  .decisions { display: flex; flex-direction: column; gap: 1.1vh; margin-top: 1.4vh; }
+  .decision { display: grid; grid-template-columns: 9vw 1fr; gap: 1vw; align-items: center; }
+  .tag {
+    border-radius: 8px;
+    text-align: center;
+    font-family: Palatino, Georgia, serif;
+    font-weight: 700;
+    font-size: 1.8vh;
+    padding: 1.5vh 0;
+  }
+  .decision p { margin: 0; font-size: 1.9vh; line-height: 1.3; }
+  .defs { display: grid; grid-template-columns: 1fr 1fr; gap: 2vh 3vw; margin-top: 3vh; }
+  table.tight { font-size: 1.35vh; }
+  table.tight th, table.tight td { padding: 0.45vh 0.45vw; }
+  table.tight td .sub { font-size: 1.15vh; }
+  tr.drop td { background: #f3eeea; color: var(--muted); }
+  .statrow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2vw; margin: 1.2vh 0 1.4vh; }
+  .statrow.five { grid-template-columns: repeat(5, 1fr); gap: 0.7vw; margin: 0.8vh 0 0.8vh; }
+  .statrow.five b { font-size: 3.2vh; }
+  .statrow.five span { font-size: 1.28vh; }
+  table.tiny { font-size: 1.22vh; }
+  table.tiny th, table.tiny td { padding: 0.28vh 0.4vw; }
+  .score-note { margin: 0 0 0.6vh; font-size: 1.35vh; color: var(--muted); }
+  .statrow div { background: var(--stone); border-radius: 8px; padding: 1.2vh 1vw; }
+  .statrow b { display: block; font-family: Palatino, Georgia, serif; font-size: 3.6vh; line-height: 1; }
+  .statrow span { display: block; margin-top: 0.4vh; font-size: 1.45vh; color: var(--muted); }
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4vw; margin-top: 0.4vh; }
+  .panel { background: var(--stone); border-radius: 8px; padding: 1.6vh 1.3vw 1.4vh; }
+  .panel h3 { margin: 0 0 0.2vh; font-family: Palatino, Georgia, serif; font-size: 2.4vh; }
+  .panel .big { font-family: Palatino, Georgia, serif; font-size: 5vh; line-height: 1; margin: 0.6vh 0 0.2vh; }
+  .panel .big span { font-size: 2vh; color: var(--muted); }
+  .panel ul { list-style: none; margin: 1vh 0 0; padding: 0; }
+  .panel li { display: flex; justify-content: space-between; gap: 1vw; padding: 0.7vh 0; border-top: 1px solid var(--line); font-size: 1.7vh; }
+  .panel li b { font-variant-numeric: tabular-nums; }
+  .adgrid { display: grid; grid-template-columns: 1.15fr 1fr 0.95fr; gap: 1.1vw; flex: 1; min-height: 0; margin-top: 0.6vh; }
+  .adcard { background: var(--stone); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; min-height: 0; }
+  .adcard img.heroimg { width: 100%; height: 48vh; object-fit: cover; object-position: center top; display: block; }
+  .adcard .cap { padding: 1vh 0.8vw 1.2vh; }
+  .adcard h3 { margin: 0; font-family: Palatino, Georgia, serif; font-size: 1.9vh; }
+  .adcard p { margin: 0.3vh 0 0; font-size: 1.5vh; line-height: 1.3; color: var(--soft); }
+  .adcard .money { font-family: Palatino, Georgia, serif; font-size: 2.6vh; margin-top: 0.4vh; }
+  .zeros { display: grid; grid-template-rows: 1fr 1fr; gap: 0.8vh; height: 100%; }
+  table.wave { font-size: 1.32vh; margin-top: 0.2vh; }
+  table.wave th, table.wave td { padding: 0.4vh 0.35vw; }
+  table.wave td .sub { font-size: 1.2vh; }
+  .thumbs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.8vw; margin-top: 0.8vh; align-items: start; }
+  .thumbs button {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+  }
+  .thumbs img {
+    width: auto;
+    height: 28vh;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+    display: block;
+    background: #f3efe9;
+  }
+  .thumbs button.hit img { box-shadow: 0 0 0 3px var(--green); }
+  .thumbs strong {
+    display: block;
+    margin-top: 0.35vh;
+    font-family: Palatino, Georgia, serif;
+    font-size: 1.45vh;
+    font-weight: 700;
+  }
+  .thumbs .hl {
+    display: block;
+    margin-top: 0.15vh;
+    font-size: 1.25vh;
+    line-height: 1.25;
+    font-weight: 700;
+  }
+  .thumbs .copy {
+    display: block;
+    margin-top: 0.1vh;
+    font-size: 1.2vh;
+    line-height: 1.25;
+    color: var(--soft);
+  }
+  .thumbs em {
+    display: block;
+    font-style: normal;
+    margin-top: 0.15vh;
+    font-size: 1.1vh;
+    color: var(--muted);
+  }
+  #lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    background: rgba(20, 16, 14, 0.92);
+    align-items: center;
+    justify-content: center;
+  }
+  #lightbox.on { display: flex; }
+  #lightbox video, #lightbox img.zoom {
+    max-width: min(70vh, 88vw);
+    max-height: 86vh;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    background: #111;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+  }
+  #lightbox .lb-close, #lightbox .lb-nav {
+    position: absolute;
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 6px;
+    font: inherit;
+    font-size: 1.6vh;
+    padding: 0.7vh 1vw;
+    cursor: pointer;
+  }
+  #lightbox .lb-close { top: 2.2vh; right: 2vw; }
+  #lightbox .lb-nav.prev { left: 2vw; }
+  #lightbox .lb-nav.next { right: 2vw; }
+  .adgrid.buy img.heroimg { height: 32vh; }
+  .slide.orders { padding-top: 2.2vh; }
+  .slide.orders h2 { font-size: 3vh; margin-bottom: 0.2vh; }
+  .slide.orders .statrow.five { margin: 0.4vh 0; }
+  .slide.orders .statrow.five b { font-size: 2.8vh; }
+  .slide.orders .score-note { margin-bottom: 0.3vh; }
+  .slide.orders table.tiny { font-size: 1.12vh; }
+  .slide.orders table.tiny th, .slide.orders table.tiny td { padding: 0.16vh 0.35vw; }
+  .zeros .adcard img.heroimg { height: 16.5vh; object-position: center 20%; }
+  .src-meta { color: #1d4e89; font-weight: 700; }
+  .src-google { color: var(--green); font-weight: 700; }
+  .src-other { color: var(--muted); }
+  .defs h3 { margin: 0 0 0.4vh; font-family: Palatino, Georgia, serif; font-size: 2.1vh; color: #fff; }
+  .defs p { margin: 0; font-size: 1.7vh; line-height: 1.35; color: #d2cbc4; }
+  nav.chrome {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    height: 6.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4.5vw;
+    background: rgba(31, 26, 23, 0.94);
+    color: #fff;
+    z-index: 5;
+  }
+  nav.chrome button {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 6px;
+    padding: 0.6vh 1vw;
+    font: inherit;
+    font-size: 1.5vh;
+    cursor: pointer;
+  }
+  nav.chrome button:hover { background: rgba(255,255,255,0.08); }
+  .dots { display: flex; gap: 0.45vw; }
+  .dots button {
+    width: 0.7vw; height: 0.7vw; min-width: 8px; min-height: 8px;
+    padding: 0; border-radius: 50%;
+    border: 0; background: rgba(255,255,255,0.28);
+  }
+  .dots button.on { background: #fff; }
+  #count { font-size: 1.5vh; color: #d9d3cc; min-width: 8ch; text-align: right; }
+  .hint { font-size: 1.4vh; color: #a39c96; }
+</style>
+</head>
+<body>
+<main id="deck">
+<section class="slide dark">
+  <p class="kicker">THE TEST · WAVES 1–4</p>
+  <h1 class="hero">Five concepts. Twenty ads.</h1>
+  <p class="lede">Four waves, Sep 25 through Oct 7. Each wave is one new version of each concept.<br>We’ll look at how they did, then the pictures.</p>
+  <div class="title-stats">
+    <div><b>$2,074</b><span>What we spent on these 20 ads</span></div>
+    <div><b>4</b><span>Orders that came from these ads</span></div>
+    <div><b>$37</b><span>What those orders were worth. Two of them are $0.</span></div>
+  </div>
+</section>
+
+
+
+<section class="slide">
+  <p class="kicker">ALL FOUR WAVES</p>
+  <h2>Here’s how the five concepts did.</h2>
+  <p class="lede">Each concept has four versions. A higher spend just means we gave that ad a bigger budget. Meta didn’t pick a winner.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Concept</th><th>Spend</th><th>Link CTR</th>
+        <th>Carts</th><th>Checkouts</th><th>Purchases</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="warm"><td>Founder<span class="sub">4 versions · 2.1, 2.2, 2.3, 2.5</span></td><td class="num">$513.68</td><td class="num"><b>1.54%</b></td><td class="num">5</td><td class="num">18</td><td class="num">2 · $0</td></tr>
+      <tr><td>UGC<span class="sub">4 versions · 1.1, 1.2, 1.3, 1.5</span></td><td class="num">$357.44</td><td class="num">1.42%</td><td class="num">2</td><td class="num">4</td><td class="num">0</td></tr>
+      <tr><td>Beauty Bestie<span class="sub">4 versions · 4.1, 4.3, 4.4, 4.5</span></td><td class="num">$267.41</td><td class="num">1.37%</td><td class="num">2</td><td class="num">2</td><td class="num">0</td></tr>
+      <tr class="good"><td>Science<span class="sub">4 versions · 3.1, 3.3, 3.4, 3.5</span></td><td class="num">$579.31</td><td class="num">1.35%</td><td class="num"><b>8</b></td><td class="num">9</td><td class="num goodnum">1 · $2.99</td></tr>
+      <tr><td>Whole Self<span class="sub">4 versions · 5.2, 5.4, 5.5, vitamins</span></td><td class="num">$353.82</td><td class="num">1.01%</td><td class="num">1</td><td class="num">3</td><td class="num goodnum">1 · $34</td></tr>
+    </tbody>
+  </table>
+  <div class="verdict">
+    <strong>5.3 isn’t in this table.</strong>
+    <p>This is only the 20 ads we tested. 5.3 has been running since August. It’s the pill photo that says “I upgraded from my mom’s multivitamin,” and it isn’t one of these. The next four slides are the pictures. Inside this test, the vitamins picture is the only one that came back with a real dollar.</p>
+  </div>
+</section>
+
+
+
+<section class="slide">
+  <p class="kicker">WAVE 1 · LAUNCHED SEP 25</p>
+  <h2>Most of the money went to Science.</h2>
+  <p class="lede">We spent $473. Science 3.1 took $277 of it and got the only order. Meta valued that order at $2.99. Founder 2.3 spent $44 and got the best click in the whole test.</p>
+  <table class="wave">
+    <thead>
+      <tr><th>Ad</th><th>Spend</th><th>Link CTR</th><th>Hook rate</th><th>Completion</th><th>Carts</th><th>Checkouts</th><th>Purchases</th></tr>
+    </thead>
+    <tbody>
+      <tr class="good"><td>Science 3.1<span class="sub">More ingredients isn’t a better multivitamin</span></td><td class="num">$277</td><td class="num">1.69%</td><td class="num">6.4%</td><td class="num">1.6%</td><td class="num"><b>7</b></td><td class="num">8</td><td class="num goodnum">1 · $2.99</td></tr>
+      <tr><td>Whole Self 5.4<span class="sub">Don’t inherit mom’s multivitamin</span></td><td class="num">$56</td><td class="num">0.96%</td><td class="num">—</td><td class="num">—</td><td class="num">0</td><td class="num">1</td><td class="num">—</td></tr>
+      <tr><td>UGC 1.2<span class="sub">Gummy convenience, without the sugar</span></td><td class="num">$52</td><td class="num">1.80%</td><td class="num">8.4%</td><td class="num">1.5%</td><td class="num">1</td><td class="num">0</td><td class="num">—</td></tr>
+      <tr class="warm"><td>Founder 2.3<span class="sub">We couldn’t find it, so we made it</span></td><td class="num">$44</td><td class="num"><b>2.28%</b></td><td class="num"><b>11.8%</b></td><td class="num"><b>2.7%</b></td><td class="num">4</td><td class="num">7</td><td class="num">—</td></tr>
+      <tr><td>Beauty 4.4<span class="sub">The easiest beauty step, five seconds</span></td><td class="num">$43</td><td class="num">1.00%</td><td class="num">9.0%</td><td class="num">1.1%</td><td class="num">0</td><td class="num">0</td><td class="num">—</td></tr>
+    </tbody>
+  </table>
+  <div class="thumbs">
+    <button type="button" class="hit" data-kind="video" data-src="ad-thumbs/play/science-3.1.mp4"><img src="ad-thumbs/play/science-3.1.jpg" alt=""><strong>Science 3.1</strong><span class="hl">See the 11</span><span class="copy">More ingredients isn’t a better multivitamin.</span><em>Play</em></button>
+    <button type="button" data-kind="image" data-frames="ad-thumbs/play/wholeself-5.4-1.png|ad-thumbs/play/wholeself-5.4-2.png|ad-thumbs/play/wholeself-5.4-3.png"><img src="ad-thumbs/play/wholeself-5.4-1.png" alt=""><strong>Whole Self 5.4</strong><span class="copy">Some things you inherit from your mom.</span><em>Zoom · 3 cards</em></button>
+    <button type="button" data-kind="video" data-src="ad-thumbs/play/ugc-1.2.mp4"><img src="ad-thumbs/play/ugc-1.2.jpg" alt=""><strong>UGC 1.2</strong><span class="copy">I wanted the convenience of gummies without all the sugar.</span><em>Play</em></button>
+    <button type="button" data-kind="video" data-src="ad-thumbs/play/founder-2.3.mp4"><img src="ad-thumbs/play/founder-2.3.jpg" alt=""><strong>Founder 2.3</strong><span class="copy">We couldn’t find the multivitamin we wanted for women our age. So we made it.</span><em>Play</em></button>
+    <button type="button" data-kind="video" data-src="ad-thumbs/play/beauty-4.4.mp4"><img src="ad-thumbs/play/beauty-4.4.jpg" alt=""><strong>Beauty 4.4</strong><span class="hl">Shop Body of Work</span><span class="copy">My easiest beauty step takes about five seconds.</span><em>Play</em></button>
+  </div>
+</section>
+
+
+
+<section class="slide">
+  <p class="kicker">WAVE 2 · LAUNCHED SEP 27</p>
+  <h2>Founder got an order. It came back as $0.</h2>
+  <p class="lede">We spent $783. Founder 2.1 took most of it, and Meta counted one purchase with no dollars. Beauty got the most clicks in the wave. Nobody added it to a cart.</p>
+  <table class="wave">
+    <thead>
+      <tr><th>Ad</th><th>Spend</th><th>Link CTR</th><th>Hook rate</th><th>Completion</th><th>Carts</th><th>Checkouts</th><th>Purchases</th></tr>
+    </thead>
+    <tbody>
+      <tr class="warm"><td>Founder 2.1<span class="sub">We built vitamins for other brands</span></td><td class="num">$286</td><td class="num">1.28%</td><td class="num">6.1%</td><td class="num">2.3%</td><td class="num">1</td><td class="num">11</td><td class="num">1 · $0</td></tr>
+      <tr><td>Whole Self 5.2<span class="sub">Your routine grew up</span></td><td class="num">$127</td><td class="num">0.97%</td><td class="num"><b>9.2%</b></td><td class="num">2.3%</td><td class="num">0</td><td class="num">1</td><td class="num">—</td></tr>
+      <tr><td>UGC 1.1<span class="sub">Never been vitamin girls</span></td><td class="num">$125</td><td class="num">1.34%</td><td class="num">6.4%</td><td class="num">1.4%</td><td class="num">0</td><td class="num">3</td><td class="num">—</td></tr>
+      <tr><td>Science 3.3<span class="sub">With biotin, the number matters</span></td><td class="num">$124</td><td class="num">1.20%</td><td class="num">8.7%</td><td class="num">2.0%</td><td class="num">1</td><td class="num">0</td><td class="num">—</td></tr>
+      <tr><td>Beauty 4.3<span class="sub">Seeing biotin isn’t a real dose</span></td><td class="num">$121</td><td class="num"><b>1.77%</b></td><td class="num">—</td><td class="num">—</td><td class="num">0</td><td class="num">1</td><td class="num">—</td></tr>
+    </tbody>
+  </table>
+  <div class="thumbs">
+    <button type="button" class="hit" data-kind="video" data-src="ad-thumbs/play/founder-2.1.mp4"><img src="ad-thumbs/play/founder-2.1.jpg" alt=""><strong>Founder 2.1</strong><span class="copy">After years of building vitamins for other brands.</span><em>Play</em></button>
+    <button type="button" data-kind="video" data-src="ad-thumbs/play/wholeself-5.2.mp4"><img src="ad-thumbs/play/wholeself-5.2.jpg" alt=""><strong>Whole Self 5.2</strong><span class="copy">Your routine grew up. Your multivitamin can, too.</span><em>Play</em></button>
+    <button type="button" data-kind="video" data-src="ad-thumbs/play/ugc-1.1.mp4"><img src="ad-thumbs/play/ugc-1.1.jpg" alt=""><strong>UGC 1.1</strong><span class="copy">For the girls who have never been vitamin girls.</span><em>Play</em></button>
+    <button type="button" data-kind="video" data-src="ad-thumbs/play/science-3.3.mp4"><img src="ad-thumbs/play/science-3.3.jpg" alt=""><strong>Science 3.3</strong><span class="copy">With biotin, the number actually matters.</span><em>Play</em></button>
+    <button type="button" data-kind="image" data-frames="ad-thumbs/play/beauty-4.3-1.png|ad-thumbs/play/beauty-4.3-2.png|ad-thumbs/play/beauty-4.3-3.png|ad-thumbs/play/beauty-4.3-4.png"><img src="ad-thumbs/play/beauty-4.3-1.png" alt=""><strong>Beauty 4.3</strong><span class="copy">Seeing biotin on the label isn’t an effective dose.</span><em>Zoom · 4 cards</em></button>
+  </div>
+</section>
+
+
+
+<section class="slide">
+  <p class="kicker">WAVE 3 · LAUNCHED SEP 30</p>
+  <h2>People clicked. Nobody bought.</h2>
+  <p class="lede">We spent $478. The best click was the founder, on “the world has enough gummy vitamins.” No orders.</p>
+  <table class="wave">
+    <thead>
+      <tr><th>Ad</th><th>Spend</th><th>Link CTR</th><th>Hook rate</th><th>Completion</th><th>Carts</th><th>Checkouts</th><th>Purchases</th></tr>
+    </thead>
+    <tbody>
+      <tr class="warm"><td>Founder 2.2<span class="sub">The world has enough gummy vitamins</span></td><td class="num">$113</td><td class="num"><b>2.03%</b></td><td class="num">7.0%</td><td class="num"><b>2.5%</b></td><td class="num">0</td><td class="num">0</td><td class="num">—</td></tr>
+      <tr><td>Science 3.4<span class="sub">What we leave out matters</span></td><td class="num">$111</td><td class="num">0.80%</td><td class="num"><b>8.6%</b></td><td class="num">1.3%</td><td class="num">0</td><td class="num">1</td><td class="num">—</td></tr>
+      <tr><td>UGC 1.3<span class="sub">Your multi can grow up with you</span></td><td class="num">$111</td><td class="num">1.39%</td><td class="num">7.6%</td><td class="num">1.9%</td><td class="num">1</td><td class="num">0</td><td class="num">—</td></tr>
+      <tr><td>Whole Self 5.5<span class="sub">This routine is easy to keep</span></td><td class="num">$105</td><td class="num">1.10%</td><td class="num">—</td><td class="num">—</td><td class="num">0</td><td class="num">0</td><td class="num">—</td></tr>
+      <tr><td>Beauty 4.1<span class="sub">The beauty step I remember</span></td><td class="num">$38</td><td class="num">0.89%</td><td class="num">8.4%</td><td class="num">0.6%</td><td class="num">2</td><td class="num">1</td><td class="num">—</td></tr>
+    </tbody>
+  </table>
+  <div class="thumbs">
+    <button type="button" data-kind="video" data-src="ad-thumbs/play/founder-2.2.mp4"><img src="ad-thumbs/play/founder-2.2.jpg" alt=""><strong>Founder 2.2</strong><span class="copy">The world has enough gummy vitamins.</span><em>Play</em></button>
+    <button type="button" data-kind="video" data-src="ad-thumbs/play/science-3.4.mp4"><img src="ad-thumbs/play/science-3.4.jpg" alt=""><strong>Science 3.4</strong><span class="copy">What we leave out matters, too.</span><em>Play</em></button>
+    <button type="button" data-kind="video" data-src="ad-thumbs/play/ugc-1.3.mp4"><img src="ad-thumbs/play/ugc-1.3.jpg" alt=""><strong>UGC 1.3</strong><span class="copy">Your multivitamin can grow up with you, too.</span><em>Play</em></button>
+    <button type="button" data-kind="image" data-frames="ad-thumbs/play/wholeself-5.5.png"><img src="ad-thumbs/play/wholeself-5.5.png" alt=""><strong>Whole Self 5.5</strong><span class="hl">This one’s made to stick</span><span class="copy">You’ve tried enough wellness routines.</span><em>Zoom</em></button>
+    <button type="button" data-kind="video" data-src="ad-thumbs/play/beauty-4.1.mp4"><img src="ad-thumbs/play/beauty-4.1.jpg" alt=""><strong>Beauty 4.1</strong><span class="copy">The beauty step I actually remember every day.</span><em>Play</em></button>
+  </div>
+</section>
+
+
+
+<section class="slide">
+  <p class="kicker">WAVE 4 · LAUNCHED OCT 6 · STILL LIVE</p>
+  <h2>The vitamins picture already has a $34 order.</h2>
+  <p class="lede">We’ve spent $341, and this wave is only two days old. Two purchases showed up. The other one has no dollars on it.</p>
+  <table class="wave">
+    <thead>
+      <tr><th>Ad</th><th>Spend</th><th>Link CTR</th><th>Hook rate</th><th>Completion</th><th>Carts</th><th>Checkouts</th><th>Purchases</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Founder 2.5<span class="sub">More ingredients doesn’t mean better</span></td><td class="num">$71</td><td class="num">1.23%</td><td class="num">3.1%</td><td class="num">0.9%</td><td class="num">0</td><td class="num">0</td><td class="num">1 · $0</td></tr>
+      <tr><td>UGC 1.5<span class="sub">For the person who reads the label</span></td><td class="num">$69</td><td class="num">1.22%</td><td class="num"><b>7.2%</b></td><td class="num"><b>1.8%</b></td><td class="num">0</td><td class="num">1</td><td class="num">—</td></tr>
+      <tr><td>Science 3.5<span class="sub">We started with the research</span></td><td class="num">$67</td><td class="num">1.40%</td><td class="num">4.0%</td><td class="num">1.5%</td><td class="num">0</td><td class="num">0</td><td class="num">—</td></tr>
+      <tr class="good"><td>Vitamins<span class="sub">12 supplements every morning</span></td><td class="num">$66</td><td class="num">1.01%</td><td class="num">—</td><td class="num">—</td><td class="num">1</td><td class="num">1</td><td class="num goodnum">1 · $34</td></tr>
+      <tr><td>Beauty 4.5<span class="sub">Serums have their job</span></td><td class="num">$65</td><td class="num">0.83%</td><td class="num">—</td><td class="num">—</td><td class="num">0</td><td class="num">0</td><td class="num">—</td></tr>
+    </tbody>
+  </table>
+  <div class="thumbs">
+    <button type="button" data-kind="video" data-src="ad-thumbs/play/founder-2.5.mp4"><img src="ad-thumbs/play/founder-2.5.jpg" alt=""><strong>Founder 2.5</strong><span class="hl">Precision, not excess</span><span class="copy">More ingredients doesn’t automatically mean a better multivitamin.</span><em>Play</em></button>
+    <button type="button" data-kind="video" data-src="ad-thumbs/play/ugc-1.5.mp4"><img src="ad-thumbs/play/ugc-1.5.jpg" alt=""><strong>UGC 1.5</strong><span class="copy">For the person who reads every supplement label.</span><em>Play</em></button>
+    <button type="button" data-kind="video" data-src="ad-thumbs/play/science-3.5.mp4"><img src="ad-thumbs/play/science-3.5.jpg" alt=""><strong>Science 3.5</strong><span class="hl">Doctor-designed. $20/mo</span><span class="copy">We started with the research, not the marketing brief.</span><em>Play</em></button>
+    <button type="button" class="hit" data-kind="image" data-frames="ad-thumbs/play/vitamins.png"><img src="ad-thumbs/play/vitamins.png" alt=""><strong>Vitamins</strong><span class="hl">12 supplements every morning</span><span class="copy">Your wellness routine doesn’t need to take over your morning.</span><em>Zoom</em></button>
+    <button type="button" data-kind="image" data-frames="ad-thumbs/play/beauty-4.5.png"><img src="ad-thumbs/play/beauty-4.5.png" alt=""><strong>Beauty 4.5</strong><span class="copy">Serums have their job. Your multivitamin has one, too.</span><em>Zoom</em></button>
+  </div>
+</section>
+
+
+
+<section class="slide">
+  <p class="kicker">AFTER THE FOUR WAVES</p>
+  <h2>What I’d take from the four waves.</h2>
+  <div class="cards">
+    <article class="card">
+      <div class="idx">01</div>
+      <div>
+        <h3>People click when the founder is talking.</h3>
+        <p>The best click in the test is Founder 2.3: “We couldn’t find the multivitamin we wanted for women our age. So we made it.” It only spent $44. Across all four waves, Founder is still the concept people click.</p>
+      </div>
+    </article>
+    <article class="card">
+      <div class="idx">02</div>
+      <div>
+        <h3>Science 3.1 is the one people put in the cart.</h3>
+        <p>“More ingredients isn’t a better multivitamin.” Seven carts, eight checkouts, and the Wave 1 order. The biotin version and the third-party-tested version didn’t do that again.</p>
+      </div>
+    </article>
+    <article class="card alert">
+      <div class="idx">03</div>
+      <div>
+        <h3>These 20 ads made $37.</h3>
+        <p>Science 3.1 came back as $2.99. The vitamins picture came back as $34. Founder 2.1 and Founder 2.5 each show a purchase with no dollars. The ad that’s actually been selling is 5.3, and it isn’t one of these 20.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+
+<section class="slide">
+  <p class="kicker">WHAT BROUGHT THE PURCHASE</p>
+  <h2>These are the ads that sold.</h2>
+  <div class="adgrid buy" style="margin-top:1vh">
+    <article class="adcard">
+      <img class="heroimg" src="ad-thumbs/whole-self-53.jpg" alt="Whole Self 5.3. I upgraded from my mom’s multivitamin.">
+      <div class="cap">
+        <h3>Whole Self 5.3 · not in the test</h3>
+        <p class="money">17 purchases · about $174</p>
+        <p>The picture says “I upgraded from my mom’s multivitamin.” The text says most multivitamins are made for everyone, and this one is for women in their 20s and 30s. That’s Aug 14 through Oct 7, the original test plus the scale campaign.</p>
+      </div>
+    </article>
+    <article class="adcard">
+      <img class="heroimg" src="ad-thumbs/waves/w4-vitamins.jpg" alt="Wave 4 vitamins. 12 supplements every morning.">
+      <div class="cap">
+        <h3>Wave 4 vitamins · inside the test</h3>
+        <p class="money">1 purchase · $34</p>
+        <p>The picture says “12 supplements every morning. One multivitamin. Two tablets a day.” It launched Oct 6. Besides Science 3.1’s $2.99, this is the only real dollar the 20 test ads made.</p>
+      </div>
+    </article>
+    <article class="adcard">
+      <img class="heroimg" src="ad-thumbs/waves/w1-science-31.jpg" alt="Science 3.1 video still">
+      <div class="cap">
+        <h3>Science 3.1 · inside the test</h3>
+        <p class="money">1 purchase · $2.99</p>
+        <p>“More ingredients isn’t a better multivitamin.” Seven carts. Meta counted a purchase, and it was almost no money. The carts are the signal. The $2.99 isn’t.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+
+<section class="slide">
+  <p class="kicker">THE LINES</p>
+  <h2>What people are actually responding to.</h2>
+  <div class="split">
+    <div class="stack">
+      <h2 style="font-size:2.2vh">What gets the click</h2>
+      <div class="mini warmbg"><h3>The founder, talking about her age</h3><p>“We couldn’t find the multivitamin we wanted for women our age. So we made it.” Best click in the test, and it only spent $44.</p></div>
+      <div class="mini warmbg"><h3>The founder, on gummies</h3><p>“The world has enough gummy vitamins.” Strong click in Wave 3. They didn’t add it to a cart.</p></div>
+      <div class="mini warmbg"><h3>Beauty, on the biotin dose</h3><p>“Seeing biotin on the label isn’t an effective dose.” Best click in Wave 2. 37 people landed on the site. Nobody added it to a cart.</p></div>
+      <div class="mini warmbg"><h3>UGC, “not a vitamin girl”</h3><p>People click it. Almost nothing happens after that.</p></div>
+    </div>
+    <div class="stack">
+      <h2 style="font-size:2.2vh">What gets closer to a sale</h2>
+      <div class="mini greenbg"><h3>Science, fewer ingredients</h3><p>“More ingredients isn’t a better multivitamin.” This is the Science line that got carts. Keep it.</p></div>
+      <div class="mini greenbg"><h3>The vitamins picture</h3><p>“12 supplements every morning.” One $34 order, two days in. Leave it on.</p></div>
+      <div class="mini greenbg"><h3>The other Science lines didn’t get carts</h3><p>“With biotin, the number matters” and “what we leave out matters” didn’t do what Science 3.1 did. Beauty’s biotin picture got the click and stopped there.</p></div>
+      <div class="mini greenbg"><h3>The new Whole Self lines didn’t get carts</h3><p>Mom, “your routine grew up,” and “this one’s easy to keep” got people to the site and not into a cart. 5.3 is the Whole Self line that sells.</p></div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="slide">
+  <p class="kicker">CREATIVE DIRECTION</p>
+  <h2>What we should make next.</h2>
+  <div class="split">
+    <div class="stack">
+      <div class="mini greenbg">
+        <h3>The copy</h3>
+        <p>Keep “More ingredients isn’t a better multivitamin.” Keep “We couldn’t find it for women our age, so we made it.” Keep 5.3’s text: most multivitamins are made for everyone, this one is for women in their 20s and 30s. Take the draft note out of that live text.</p>
+      </div>
+      <div class="mini greenbg">
+        <h3>The words on the picture</h3>
+        <p>5.3 says it on the image: “I upgraded from my mom’s multivitamin.” The vitamins ad says it on the image: “12 supplements every morning.” Science 3.1’s headline is “See the 11.” The idea has to be readable on the picture. It can’t only live in the text underneath.</p>
+      </div>
+    </div>
+    <div class="stack">
+      <div class="mini warmbg">
+        <h3>The visual</h3>
+        <p>The pictures that sold are simple. Pills, or one jar in someone’s hand. Founder talking to camera is what gets the click. A biotin jar and a face covered in products get attention, and they haven’t sold. If the next round is meant to get orders, don’t lead with those.</p>
+      </div>
+      <div class="mini warmbg">
+        <h3>What I’d do now</h3>
+        <p>Leave 5.3 on. Give Founder 2.3 a real budget. It was the best click and it only spent $44. Keep Science on “more ingredients isn’t better.” Let Wave 4 keep running. The vitamins picture already has the $34. Two days isn’t enough to judge the other four.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="slide orders">
+  <p class="kicker">SEP 30 – OCT 7</p>
+  <h2>Where this week’s orders came from.</h2>
+  <div class="statrow five">
+    <div><b>16</b><span>Meta orders</span></div>
+    <div><b style="color:var(--copper)">4</b><span>With $0 value</span></div>
+    <div><b>2</b><span>Only Google orders</span></div>
+    <div><b>2</b><span>Meta + Google</span></div>
+    <div><b style="color:var(--green)">14</b><span>Total paid ads orders</span></div>
+  </div>
+  <p class="score-note">14 is the 12 Meta orders that have dollars, plus the 2 Google orders Meta missed. The 2 Meta + Google orders are already inside the 16.</p>
+  <table class="tiny">
+    <thead>
+      <tr><th>Date</th><th>Orders</th><th>Google / Meta</th><th>Value</th><th>Comment</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Sep 30</td><td>#1536</td><td class="src-meta">Meta</td><td class="num">$34.00</td><td>Meta purchase.</td></tr>
+      <tr><td>Sep 30</td><td>#1535</td><td class="src-google">Google</td><td class="num">$34.00</td><td>Google paid. Meta did not count it.</td></tr>
+      <tr class="drop"><td>Sep 30</td><td>—</td><td class="src-meta">Meta</td><td class="num">$0</td><td>Meta purchase. Value is 0.</td></tr>
+      <tr class="drop"><td>Sep 30</td><td>#1537</td><td>Shopify</td><td class="num">$0</td><td>Draft order. Value is 0.</td></tr>
+      <tr><td>Oct 1</td><td>#1539</td><td class="src-meta">Meta</td><td class="num">$19.55</td><td>Meta purchase.</td></tr>
+      <tr><td>Oct 1</td><td>#1541</td><td class="src-meta">Meta</td><td class="num">$24.65</td><td>Meta purchase.</td></tr>
+      <tr><td>Oct 1</td><td>#1543</td><td class="src-meta">Meta</td><td class="num">$19.55</td><td>Meta purchase.</td></tr>
+      <tr><td>Oct 1</td><td>#1542</td><td class="src-meta">Meta</td><td class="num">$34.00</td><td>Meta purchase. The visit was direct.</td></tr>
+      <tr><td>Oct 1</td><td>#1540</td><td>Both</td><td class="num">$34.00</td><td>Google organic. Double attribution: they saw the Meta ad, then Googled.</td></tr>
+      <tr><td>Oct 1</td><td>#1538</td><td>Shopify</td><td class="num">$29.00</td><td>Direct. Not in Meta or Google.</td></tr>
+      <tr><td>Oct 2</td><td>#1545</td><td class="src-meta">Meta</td><td class="num">$24.65</td><td>Meta purchase. The visit was direct.</td></tr>
+      <tr><td>Oct 2</td><td>#1544</td><td>Shopify</td><td class="num">$20.00</td><td>Subscription rebill. Not a paid ad order.</td></tr>
+      <tr><td>Oct 3</td><td>#1546</td><td class="src-meta">Meta</td><td class="num">$23.00</td><td>Meta purchase. The visit was direct.</td></tr>
+      <tr><td>Oct 4</td><td>#1549</td><td class="src-meta">Meta</td><td class="num">$19.55</td><td>Meta purchase.</td></tr>
+      <tr><td>Oct 4</td><td>#1548</td><td class="src-google">Google</td><td class="num">$40.00</td><td>Google paid. Meta did not count it.</td></tr>
+      <tr><td>Oct 4</td><td>#1547</td><td>Shopify</td><td class="num">$40.60</td><td>Subscription rebill. Not a paid ad order.</td></tr>
+      <tr class="drop"><td>Oct 5</td><td>—</td><td class="src-meta">Meta</td><td class="num">$0</td><td>Meta purchase. Value is 0. No paid order this day.</td></tr>
+      <tr class="drop"><td>Oct 5</td><td>#1550, #1551</td><td>Shopify</td><td class="num">$0</td><td>2 draft orders. Value is 0.</td></tr>
+      <tr><td>Oct 6</td><td>#1552</td><td class="src-meta">Meta</td><td class="num">$34.00</td><td>Meta purchase.</td></tr>
+      <tr><td>Oct 6</td><td>#1556</td><td>Both</td><td class="num">$40.00</td><td>Google organic. Double attribution: they saw the Meta ad, then Googled.</td></tr>
+      <tr class="drop"><td>Oct 6</td><td>—</td><td class="src-meta">Meta</td><td class="num">$0</td><td>Meta purchase. Value is 0.</td></tr>
+      <tr><td>Oct 6</td><td>#1553</td><td>Shopify</td><td class="num">$23.00</td><td>Subscription rebill. Not a paid ad order.</td></tr>
+      <tr class="drop"><td>Oct 6</td><td>#1554, #1555</td><td>Shopify</td><td class="num">$0</td><td>2 draft orders. Value is 0.</td></tr>
+      <tr><td>Oct 7</td><td>#1558</td><td class="src-meta">Meta</td><td class="num">$19.55</td><td>Meta purchase.</td></tr>
+      <tr class="drop"><td>Oct 7</td><td>—</td><td class="src-meta">Meta</td><td class="num">$0</td><td>Meta purchase. Value is 0.</td></tr>
+      <tr><td>Oct 7</td><td>#1559</td><td>Shopify</td><td class="num">$40.00</td><td>Not in Meta. GA has no source.</td></tr>
+      <tr><td>Oct 7</td><td>#1560</td><td>Shopify</td><td class="num">$34.00</td><td>Not in Meta. Not in GA yet.</td></tr>
+      <tr class="drop"><td>Oct 7</td><td>#1557</td><td>Shopify</td><td class="num">$0</td><td>Draft order. Value is 0.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+
+</main>
+
+<nav class="chrome">
+  <button id="prev" type="button">Back</button>
+  <div class="dots" id="dots"></div>
+  <span class="hint">Arrows to move · F for full screen</span>
+  <span id="count"></span>
+  <button id="next" type="button">Next</button>
+</nav>
+
+<div id="lightbox">
+  <button id="lb-close" class="lb-close" type="button">Close</button>
+  <button id="lb-prev" class="lb-nav prev" type="button">Back</button>
+  <video id="lb-video" controls playsinline></video>
+  <img id="lb-img" class="zoom" alt="">
+  <button id="lb-next" class="lb-nav next" type="button">Next</button>
+</div>
+
+<script>
+  const slides = [...document.querySelectorAll(".slide")];
+  const dots = document.getElementById("dots");
+  const count = document.getElementById("count");
+  let i = 0;
+  slides.forEach((_, n) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("aria-label", "Slide " + (n + 1));
+    b.addEventListener("click", () => go(n));
+    dots.appendChild(b);
+  });
+  function go(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, idx) => s.classList.toggle("on", idx === i));
+    [...dots.children].forEach((d, idx) => d.classList.toggle("on", idx === i));
+    count.textContent = (i + 1) + " / " + slides.length;
+    history.replaceState(null, "", "#" + (i + 1));
+  }
+  document.getElementById("prev").addEventListener("click", () => go(i - 1));
+  document.getElementById("next").addEventListener("click", () => go(i + 1));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") { e.preventDefault(); go(i + 1); }
+    if (e.key === "ArrowLeft" || e.key === "PageUp" || e.key === "Backspace") { e.preventDefault(); go(i - 1); }
+    if (e.key === "Home") go(0);
+    if (e.key === "End") go(slides.length - 1);
+    if (e.key === "f" || e.key === "F") {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+  });
+  const start = Math.max(0, (parseInt(location.hash.replace("#", ""), 10) || 1) - 1);
+  go(start);
+
+  const box = document.getElementById("lightbox");
+  const lbVideo = document.getElementById("lb-video");
+  const lbImg = document.getElementById("lb-img");
+  const lbPrev = document.getElementById("lb-prev");
+  const lbNext = document.getElementById("lb-next");
+  let frames = [];
+  let frame = 0;
+  function showFrame() {
+    lbImg.src = frames[frame];
+    const many = frames.length > 1;
+    lbPrev.style.display = many ? "block" : "none";
+    lbNext.style.display = many ? "block" : "none";
+  }
+  function openMedia(btn) {
+    const kind = btn.dataset.kind;
+    frames = (btn.dataset.frames || "").split("|").filter(Boolean);
+    frame = 0;
+    if (kind === "video") {
+      lbImg.style.display = "none";
+      lbVideo.style.display = "block";
+      lbVideo.src = btn.dataset.src;
+      lbVideo.play();
+      lbPrev.style.display = "none";
+      lbNext.style.display = "none";
+    } else {
+      lbVideo.pause();
+      lbVideo.removeAttribute("src");
+      lbVideo.style.display = "none";
+      lbImg.style.display = "block";
+      showFrame();
+    }
+    box.classList.add("on");
+  }
+  function closeMedia() {
+    box.classList.remove("on");
+    lbVideo.pause();
+    lbVideo.removeAttribute("src");
+    lbImg.removeAttribute("src");
+  }
+  document.querySelectorAll(".thumbs button").forEach((btn) => {
+    btn.addEventListener("click", () => openMedia(btn));
+  });
+  document.getElementById("lb-close").addEventListener("click", closeMedia);
+  box.addEventListener("click", (e) => { if (e.target === box) closeMedia(); });
+  lbPrev.addEventListener("click", () => { frame = (frame - 1 + frames.length) % frames.length; showFrame(); });
+  lbNext.addEventListener("click", () => { frame = (frame + 1) % frames.length; showFrame(); });
+  document.addEventListener("keydown", (e) => {
+    if (!box.classList.contains("on")) return;
+    e.stopImmediatePropagation();
+    if (e.key === "Escape") closeMedia();
+    if (e.key === "ArrowRight" && frames.length > 1) { e.preventDefault(); frame = (frame + 1) % frames.length; showFrame(); }
+    if (e.key === "ArrowLeft" && frames.length > 1) { e.preventDefault(); frame = (frame - 1 + frames.length) % frames.length; showFrame(); }
+    if (e.key === " " || e.key === "PageDown" || e.key === "PageUp") e.preventDefault();
+  }, true);
+</script>
+</body>
+</html>
